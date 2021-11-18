@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+
+{% block buttons %}
+  
+{% endblock buttons %}
+
+{% block post %}
+<div class="container">
+    <h3 class="alert alert-info text-success text-center">Sign Up Form</h3>
+    <form action="{% url 'signUp' %}" method="POST" class="col-lg-6 offset-lg-3" novalidate>
+        {% csrf_token %}
+        {% for er in form.errors %}
+          {{er}}
+        {% endfor %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-success">Sign Up</button>
+      </form>
+</div>
+{% endblock post %}

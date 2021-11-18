@@ -1,0 +1,24 @@
+{% extends "home.html" %}
+
+
+{% block buttons %}
+  
+{% endblock buttons %}
+
+{% block post %}
+<div class="container">
+  {% if messages %}
+    <div class="alert alert-danger w-50">
+      {% for msg in messages %}
+          {{msg}}
+      {% endfor %}
+    </div>
+  {% endif %}
+    <form action="{% url 'logIn' %}" method="POST" class="col-lg-6 offset-lg-3">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-success">Log In</button>
+        <p>{{form.errors}}</p>
+      </form>
+</div>
+{% endblock post %}
